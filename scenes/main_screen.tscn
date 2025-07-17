@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2hhqm873e4x3"]
+[gd_scene load_steps=6 format=3 uid="uid://c2hhqm873e4x3"]
 
 [ext_resource type="Script" uid="uid://bhhntyyuu5a2w" path="res://scenes/MainScreenScript.gd" id="1_7fvvs"]
 
@@ -6,6 +6,18 @@
 font_names = PackedStringArray("Sitka Small")
 font_italic = true
 font_weight = 525
+
+[sub_resource type="SystemFont" id="SystemFont_kusfh"]
+font_names = PackedStringArray("Sitka Small")
+font_italic = true
+
+[sub_resource type="SystemFont" id="SystemFont_aum10"]
+font_names = PackedStringArray("Sitka Small")
+font_italic = true
+
+[sub_resource type="SystemFont" id="SystemFont_lushf"]
+font_names = PackedStringArray("Sitka Small")
+font_italic = true
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -40,7 +52,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = -158.0
-offset_right = 133.0
+offset_right = 190.215
 offset_bottom = -57.0
 grow_vertical = 0
 alignment = 1
@@ -48,14 +60,17 @@ script = ExtResource("1_7fvvs")
 
 [node name="NewGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_kusfh")
 text = "New Game"
 
 [node name="About" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_aum10")
 text = "About"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_lushf")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/NewGame" to="VBoxContainer" method="_on_new_game_pressed"]
