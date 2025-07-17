@@ -1,13 +1,33 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ctrfqu5b5msha"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvo2s"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ctrfqu5b5msha"]
 
 [sub_resource type="SystemFont" id="SystemFont_w70ki"]
 font_names = PackedStringArray("Sitka Small")
+font_italic = true
+font_weight = 475
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yvo2s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubp8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ullrh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w70ki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_up7li"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trtdk"]
 
 [resource]
 default_font = SubResource("SystemFont_w70ki")
 default_font_size = 20
 /colors/background_color = Color(0.690215, 8.29774e-05, 0.575808, 1)
 Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.921089, 0.610773, 0.577455, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = SubResource("SystemFont_w70ki")
 Button/styles/focus = SubResource("StyleBoxEmpty_yvo2s")
+Button/styles/hover = SubResource("StyleBoxEmpty_ubp8w")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_ullrh")
+Button/styles/normal = SubResource("StyleBoxEmpty_w70ki")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_up7li")
+Button/styles/pressed = SubResource("StyleBoxEmpty_trtdk")
