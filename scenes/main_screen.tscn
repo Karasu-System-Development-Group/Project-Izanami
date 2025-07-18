@@ -97,6 +97,7 @@ theme_override_fonts/font = SubResource("SystemFont_lushf")
 text = "Quit"
 alignment = 0
 
+[connection signal="finished" from="VBoxContainer/SelectSound" to="VBoxContainer" method="_on_select_sound_finished"]
 [connection signal="ready" from="VBoxContainer/HoverSound" to="VBoxContainer" method="_on_hover_sound_ready"]
 [connection signal="mouse_entered" from="VBoxContainer/NewGame" to="VBoxContainer" method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="VBoxContainer" method="_on_new_game_pressed"]
