@@ -1,22 +1,26 @@
 extends VBoxContainer
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer  # Assuming AudioStreamPlayer is a child of this node
+@onready var hoverSound: AudioStreamPlayer = $HoverSound 
+@onready var selectSound: AudioStreamPlayer = $SelectSound 
 
 
 func _on_new_game_pressed():
-	pass # Replace with function body.
+	print(2)
+	selectSound.play()
+	
 	
 func _on_new_game_mouse_entered():
-	audio_stream_player.play()
+	hoverSound.play()
 	
-
 func _on_about_pressed():
-	pass # Replace with function body.
+	print(2)
+	selectSound.play()
 
 func _on_about_mouse_entered():
-	audio_stream_player.play()
+	hoverSound.play()
 
 func _on_quit_pressed():
+	selectSound.play()
 	get_tree().quit()
 	
 func _on_quit_mouse_entered():
-	audio_stream_player.play()
+	hoverSound.play()
