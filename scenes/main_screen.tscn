@@ -14,11 +14,11 @@ font_weight = 525
 font_names = PackedStringArray("Sitka Small")
 font_italic = true
 
-[sub_resource type="SystemFont" id="SystemFont_aum10"]
+[sub_resource type="SystemFont" id="SystemFont_lushf"]
 font_names = PackedStringArray("Sitka Small")
 font_italic = true
 
-[sub_resource type="SystemFont" id="SystemFont_lushf"]
+[sub_resource type="SystemFont" id="SystemFont_aum10"]
 font_names = PackedStringArray("Sitka Small")
 font_italic = true
 
@@ -80,6 +80,14 @@ action_mode = 0
 text = "New Game"
 alignment = 0
 
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_kusfh")
+theme_override_fonts/font = SubResource("SystemFont_lushf")
+text = "Settings"
+alignment = 0
+
 [node name="About" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -100,6 +108,8 @@ alignment = 0
 [connection signal="ready" from="VBoxContainer/HoverSound" to="VBoxContainer" method="_on_hover_sound_ready"]
 [connection signal="mouse_entered" from="VBoxContainer/NewGame" to="VBoxContainer" method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/NewGame" to="VBoxContainer" method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Settings" to="VBoxContainer" method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="VBoxContainer" method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/About" to="VBoxContainer" method="_on_about_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/About" to="VBoxContainer" method="_on_about_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Quit" to="VBoxContainer" method="_on_quit_mouse_entered"]
