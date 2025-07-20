@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2hhqm873e4x3"]
+[gd_scene load_steps=12 format=3 uid="uid://c2hhqm873e4x3"]
 
 [ext_resource type="Script" uid="uid://bhhntyyuu5a2w" path="res://scenes/MainScreenScript.gd" id="1_7fvvs"]
 [ext_resource type="AudioStream" uid="uid://cxksud3xmf2qr" path="res://assets/sounds/menu/darkness_piano.mp3" id="1_w87pm"]
+[ext_resource type="Texture2D" uid="uid://c5rtiyv68yppj" path="res://assets/logo/logo.png" id="2_a46j4"]
 [ext_resource type="Theme" uid="uid://ctrfqu5b5msha" path="res://assets/styles/ButtonsStyle.tres" id="2_kusfh"]
 [ext_resource type="AudioStream" uid="uid://15tuhkrxk0i2" path="res://assets/sounds/menu/Wood Block3.mp3" id="2_lushf"]
 [ext_resource type="AudioStream" uid="uid://dorkahdlptslo" path="res://assets/sounds/menu/Wood Block1.ogg" id="3_aum10"]
@@ -46,12 +47,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_w87pm")
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="Sprite2D" parent="CenterContainer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_a46j4")
+
 [node name="BGSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_w87pm")
 volume_db = -20.0
 parameters/looping = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
