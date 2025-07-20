@@ -2,7 +2,6 @@ extends VBoxContainer
 @onready var hoverSound: AudioStreamPlayer = $HoverSound 
 @onready var selectSound: AudioStreamPlayer = $SelectSound 
 
-
 func _on_new_game_pressed():
 	print(2)
 	selectSound.play()
