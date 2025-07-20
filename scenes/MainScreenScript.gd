@@ -5,6 +5,8 @@ extends VBoxContainer
 func _on_new_game_pressed():
 	print(2)
 	selectSound.play()
+	get_tree().change_scene_to_file("res://scenes/game/select_first_acana.tscn")
+
 	
 	
 func _on_new_game_mouse_entered():
