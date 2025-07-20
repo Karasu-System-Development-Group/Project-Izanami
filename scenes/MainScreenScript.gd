@@ -27,6 +27,8 @@ func _on_settings_mouse_entered():
 func _on_about_pressed():
 	print(2)
 	selectSound.play()
+	get_tree().change_scene_to_file("res://scenes/menu/about_screen.tscn")
+
 
 func _on_about_mouse_entered():
 	hoverSound.play()
