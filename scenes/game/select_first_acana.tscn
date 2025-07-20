@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrr8q0871e68"]
+
+[ext_resource type="Texture2D" uid="uid://bm6cyjewxuvsi" path="res://assets/arcanas/monochrome/back.png" id="1_fscjb"]
+[ext_resource type="Script" uid="uid://d36wbvpurgjsq" path="res://scenes/game/moon_arcana.gd" id="2_fscjb"]
+
+[node name="SelectFirtsAcana" type="Node2D"]
+
+[node name="moonArcana" type="NinePatchRect" parent="."]
+offset_left = 313.0
+offset_top = 177.0
+offset_right = 568.0
+offset_bottom = 503.0
+mouse_filter = 1
+texture = ExtResource("1_fscjb")
+script = ExtResource("2_fscjb")
+
+[connection signal="mouse_entered" from="moonArcana" to="moonArcana" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="moonArcana" to="moonArcana" method="_on_mouse_exited"]
