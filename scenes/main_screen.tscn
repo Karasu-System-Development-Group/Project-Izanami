@@ -47,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_w87pm")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Logo" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,7 +61,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="Sprite2D" parent="CenterContainer"]
+[node name="Logo" type="Sprite2D" parent="Logo"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_a46j4")
 
