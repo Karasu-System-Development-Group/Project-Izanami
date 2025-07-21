@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqciqppjb2hi"]
+
+[ext_resource type="Texture2D" uid="uid://bo7is0iekkct3" path="res://assets/house/free-house-pixel-art/hut-tile-set/bg-wall.png" id="1_2pxy7"]
+[ext_resource type="Texture2D" uid="uid://cvdvshe713jwt" path="res://assets/house/free-house-pixel-art/hut-tile-set/floor-3.png" id="2_mfl5e"]
+
+[node name="House" type="Node2D"]
+
+[node name="walls" type="NinePatchRect" parent="."]
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 1284.0
+offset_bottom = 725.0
+texture = ExtResource("1_2pxy7")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="ceiling" type="NinePatchRect" parent="."]
+offset_left = 400.0
+offset_top = 192.0
+offset_right = 440.0
+offset_bottom = 222.0
+texture = ExtResource("2_mfl5e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(652, 335)
+zoom = Vector2(2.56, 2.56)
