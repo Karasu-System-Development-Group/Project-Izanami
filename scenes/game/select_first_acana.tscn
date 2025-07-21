@@ -1,21 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhrr8q0871e68"]
+[gd_scene load_steps=6 format=3 uid="uid://dhrr8q0871e68"]
 
 [ext_resource type="Texture2D" uid="uid://bm6cyjewxuvsi" path="res://assets/arcanas/monochrome/back.png" id="1_fscjb"]
 [ext_resource type="Script" uid="uid://d36wbvpurgjsq" path="res://scenes/game/moon_arcana.gd" id="2_fscjb"]
 [ext_resource type="Script" uid="uid://diki8csfmhbkt" path="res://scenes/game/sun_arcana.gd" id="3_ufutt"]
+[ext_resource type="Texture2D" uid="uid://crceaefmdctea" path="res://assets/arcanas/monochrome/18.png" id="4_p5l88"]
+[ext_resource type="Texture2D" uid="uid://ceo0jce5yske6" path="res://assets/arcanas/monochrome/19.png" id="5_fefre"]
 
 [node name="SelectFirtsAcana" type="Node2D"]
 
-[node name="moonArcana" type="NinePatchRect" parent="."]
+[node name="Unused" type="Node" parent="."]
+
+[node name="moonArcanaold" type="NinePatchRect" parent="Unused"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 296.0
-offset_top = 145.0
-offset_right = 551.0
-offset_bottom = 471.0
+offset_left = -344.0
+offset_top = -215.0
+offset_right = -89.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -24,7 +29,8 @@ mouse_filter = 1
 texture = ExtResource("1_fscjb")
 script = ExtResource("2_fscjb")
 
-[node name="sunArcana" type="NinePatchRect" parent="."]
+[node name="sunArcanaold" type="NinePatchRect" parent="Unused"]
+visible = false
 offset_left = 699.0
 offset_top = 148.0
 offset_right = 954.0
@@ -35,7 +41,27 @@ mouse_filter = 1
 texture = ExtResource("1_fscjb")
 script = ExtResource("3_ufutt")
 
-[connection signal="mouse_entered" from="moonArcana" to="moonArcana" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="moonArcana" to="moonArcana" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="sunArcana" to="sunArcana" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="sunArcana" to="sunArcana" method="_on_mouse_exited"]
+[node name="moonArcana" type="TextureButton" parent="."]
+offset_left = 299.0
+offset_top = 151.0
+offset_right = 372.0
+offset_bottom = 264.0
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_fscjb")
+texture_hover = ExtResource("4_p5l88")
+
+[node name="sunArcana" type="TextureButton" parent="."]
+offset_left = 800.0
+offset_top = 151.0
+offset_right = 873.0
+offset_bottom = 264.0
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_fscjb")
+texture_hover = ExtResource("5_fefre")
+
+[connection signal="mouse_entered" from="Unused/moonArcanaold" to="Unused/moonArcanaold" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Unused/moonArcanaold" to="Unused/moonArcanaold" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Unused/sunArcanaold" to="Unused/sunArcanaold" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Unused/sunArcanaold" to="Unused/sunArcanaold" method="_on_mouse_exited"]
