@@ -1,5 +1,6 @@
 extends TextureButton
 
+@onready var hoverSound: AudioStreamPlayer = $PaperFlip 
 
 func _on_mouse_entered():
-	pass # Replace with function body.
+	hoverSound.play()
