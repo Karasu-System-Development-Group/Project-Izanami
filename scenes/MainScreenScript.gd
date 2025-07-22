@@ -1,6 +1,9 @@
 extends VBoxContainer
 @onready var hoverSound: AudioStreamPlayer = $HoverSound 
 @onready var selectSound: AudioStreamPlayer = $SelectSound 
+@onready var quitDialog: ConfirmationDialog = $Quit/QuitDialog
+
+
 
 func _on_new_game_pressed():
 	print(2)
@@ -38,8 +41,12 @@ func _on_about_mouse_entered():
 ## QUIT ##
 
 func _on_quit_pressed():
+	quitDialog.popup_centered()
 	selectSound.play()
-	get_tree().quit()
 	
 func _on_quit_mouse_entered():
 	hoverSound.play()
+
+
+func _on_quit_dialog_confirmed():
+	get_tree().quit()
