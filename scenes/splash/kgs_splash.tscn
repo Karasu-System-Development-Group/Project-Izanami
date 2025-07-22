@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://csmrfyfwmqp8b"]
+
+[ext_resource type="Texture2D" uid="uid://cv0mrmrkwsl6t" path="res://assets/logo/kgs_logo.png" id="1_jetwg"]
+
+[node name="kgs_splash" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+
+[node name="ksg_logo" type="TextureRect" parent="."]
+layout_direction = 1
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jetwg")
+
+[node name="Timer" type="Timer" parent="ksg_logo"]
+wait_time = 2.5
+one_shot = true
+autostart = true
