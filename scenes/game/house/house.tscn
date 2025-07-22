@@ -64,7 +64,7 @@ texture = ExtResource("2_mfl5e")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="ceiling2" type="NinePatchRect" parent="."]
+[node name="floor" type="NinePatchRect" parent="."]
 offset_left = 401.0
 offset_top = 282.0
 offset_right = 904.0
