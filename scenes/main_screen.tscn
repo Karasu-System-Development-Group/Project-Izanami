@@ -141,6 +141,18 @@ theme_override_fonts/font = SubResource("SystemFont_lushf")
 text = "Quit"
 alignment = 0
 
+[node name="QuitDialog" type="ConfirmationDialog" parent="VBoxContainer/Quit"]
+handle_input_locally = false
+title = ""
+size = Vector2i(323, 100)
+transient = false
+exclusive = false
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to quit?"
+dialog_hide_on_ok = false
+dialog_close_on_escape = false
+cancel_button_text = "No"
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="VBoxContainer" method="_on_main_screen_tree_entered"]
 [connection signal="ready" from="BGSound" to="VBoxContainer" method="_on_bg_sound_ready"]
@@ -154,3 +166,4 @@ alignment = 0
 [connection signal="pressed" from="VBoxContainer/About" to="VBoxContainer" method="_on_about_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Quit" to="VBoxContainer" method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer" method="_on_quit_pressed"]
+[connection signal="confirmed" from="VBoxContainer/Quit/QuitDialog" to="VBoxContainer" method="_on_quit_dialog_confirmed"]
