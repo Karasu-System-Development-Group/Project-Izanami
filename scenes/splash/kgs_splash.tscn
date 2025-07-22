@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csmrfyfwmqp8b"]
+[gd_scene load_steps=4 format=3 uid="uid://csmrfyfwmqp8b"]
 
 [ext_resource type="Script" uid="uid://dnfvdpe4jtw17" path="res://scenes/splash/kgs_splash.gd" id="1_ih711"]
 [ext_resource type="Texture2D" uid="uid://cv0mrmrkwsl6t" path="res://assets/logo/kgs_logo.png" id="1_jetwg"]
+[ext_resource type="AudioStream" uid="uid://cu4bl47kj1uqp" path="res://assets/sounds/splash/crow-call_97bpm.wav" id="3_4okga"]
 
 [node name="kgs_splash" type="Control"]
 layout_mode = 3
@@ -28,6 +29,9 @@ autostart = true
 layout_mode = 0
 offset_right = 1279.0
 offset_bottom = 720.0
+
+[node name="CrowSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4okga")
 
 [connection signal="timeout" from="ksg_logo/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
