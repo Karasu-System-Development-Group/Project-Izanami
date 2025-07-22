@@ -1,21 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://csmrfyfwmqp8b"]
+[gd_scene load_steps=3 format=3 uid="uid://csmrfyfwmqp8b"]
 
+[ext_resource type="Script" uid="uid://dnfvdpe4jtw17" path="res://scenes/splash/kgs_splash.gd" id="1_ih711"]
 [ext_resource type="Texture2D" uid="uid://cv0mrmrkwsl6t" path="res://assets/logo/kgs_logo.png" id="1_jetwg"]
 
 [node name="kgs_splash" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
+script = ExtResource("1_ih711")
 
 [node name="ksg_logo" type="TextureRect" parent="."]
 layout_direction = 1
 layout_mode = 1
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.5, 0.5)
+offset_left = -279.0
+offset_top = -192.0
+offset_right = 1641.0
+offset_bottom = 888.0
 texture = ExtResource("1_jetwg")
+stretch_mode = 3
 
 [node name="Timer" type="Timer" parent="ksg_logo"]
 wait_time = 2.5
 one_shot = true
 autostart = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 1279.0
+offset_bottom = 720.0
+
+[connection signal="timeout" from="ksg_logo/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
