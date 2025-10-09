@@ -43,7 +43,10 @@ func update_livingroom_objects(scene):
 
 
 
-
+func stopChar(ativar):
+	Char.set_process_input(ativar)
+	Char.set_physics_process(ativar)
+	Char.set_process(ativar)
 
 
 func updatePensamento(texto):
