@@ -114,10 +114,11 @@ size_flags_vertical = 3
 theme = ExtResource("2_kusfh")
 theme_override_fonts/font = SubResource("SystemFont_kusfh")
 action_mode = 0
-text = "New Game"
+text = "Jogar"
 alignment = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_kusfh")
@@ -130,7 +131,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_kusfh")
 theme_override_fonts/font = SubResource("SystemFont_aum10")
-text = "About"
+text = "Sobre"
 alignment = 0
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
@@ -138,7 +139,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_kusfh")
 theme_override_fonts/font = SubResource("SystemFont_lushf")
-text = "Quit"
+text = "Sair"
 alignment = 0
 
 [node name="QuitDialog" type="ConfirmationDialog" parent="VBoxContainer/Quit"]
