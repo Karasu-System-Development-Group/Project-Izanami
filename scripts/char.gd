@@ -4,9 +4,54 @@ extends CharacterBody2D
 @onready var footsteps = $footsteps
 @export var speed = 400
 @onready var camera = $Camera2D
+
+@onready var bedRoomFurniture = $bedRoomFurnitrune
+@onready var bedRoomBox = $bedroomBox
+
+var bedRoomIsArranged = false
+var bedRoomBoxIsVisible = true
+
+
+@onready var livingRoomFurniture = $livingRoomFurniture
+@onready var livingRoomBox = $livingRoomBox
+
+var livingRoomIsArranged = false
+var livingRoomBoxIsVisible = true
+
+
 var direction = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
 var lastRoom = "outside"
+var lastRoomArranged = "none"
+
+
+
+func update_bedroom_objects(scene):
+	var furn = scene.get_node_or_null("bedRoomFurnitrune")
+	var box = scene.get_node_or_null("bedroomBox")
+	if furn: furn.visible = bedRoomIsArranged
+	if box: box.visible = bedRoomBoxIsVisible
+
+
+
+
+func update_livingroom_objects(scene):
+	var furn = scene.get_node_or_null("livingRoomFurniture")
+	var box = scene.get_node_or_null("livingRoomBox")
+	if furn: furn.visible = livingRoomIsArranged
+	if box: box.visible = livingRoomBoxIsVisible
+
+
+
+
+
+
+func updatePensamento(texto):
+	$RichTextLabel.text = texto
+	
+
+
+
 
 
 func _ready():
@@ -14,6 +59,10 @@ func _ready():
 	camera.enabled = false
 	camera.limit_left = 10
 	camera.limit_right = 10
+	if bedRoomFurniture:
+		bedRoomFurniture.visible = true
+	if bedRoomBox:
+		bedRoomBox.visible = false
 
 
 func _physics_process(delta):
