@@ -8,6 +8,8 @@ extends VBoxContainer
 func _on_new_game_pressed():
 	print(2)
 	selectSound.play()
+	TransitionManager.play_transition()
+	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/game/house/house.tscn")
 
 	
@@ -19,6 +21,7 @@ func _on_new_game_mouse_entered():
 ## SETTINGS ##	
 func _on_settings_pressed():
 	print(2)
+	await get_tree().create_timer(1.5).timeout
 	selectSound.play()
 
 func _on_settings_mouse_entered():
