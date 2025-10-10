@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8jee2nqtm64"]
+
+[ext_resource type="AudioStream" uid="uid://dorkahdlptslo" path="res://assets/sounds/menu/Wood Block1.ogg" id="1_0ryc0"]
+[ext_resource type="Script" uid="uid://c2hrq6kfx552b" path="res://scenes/menu/aditional_info.gd" id="1_lwvnq"]
+[ext_resource type="Texture2D" uid="uid://dwuwhd2ruw2se" path="res://assets/menu/menu_bg.webp" id="2_lwvnq"]
+[ext_resource type="Texture2D" uid="uid://btauf2vc4lio2" path="res://assets/menu/bg.png" id="3_ahfig"]
+[ext_resource type="Texture2D" uid="uid://7at3ccrq58ye" path="res://assets/menu/bg_black.png" id="4_flmve"]
+[ext_resource type="Texture2D" uid="uid://cmmjqkgt4rh1" path="res://assets/logo/logo4.png" id="5_3xnbo"]
+[ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="6_kxa8x"]
+[ext_resource type="AudioStream" uid="uid://15tuhkrxk0i2" path="res://assets/sounds/menu/Wood Block3.mp3" id="7_r7nqd"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="8_0s2wr"]
+
+[node name="aditionalInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lwvnq")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0ryc0")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(674, 373)
+scale = Vector2(0.25118, 0.25118)
+texture = ExtResource("2_lwvnq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(627, 369.922)
+scale = Vector2(0.796807, 0.455853)
+texture = ExtResource("3_ahfig")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-7.62939e-05, 8.28262)
+scale = Vector2(0.909723, 1.01303)
+texture = ExtResource("4_flmve")
+
+[node name="logo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1023, 75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_3xnbo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -525.0
+offset_top = -284.0
+offset_right = 525.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_kxa8x")
+theme_override_fonts/normal_font = ExtResource("8_0s2wr")
+theme_override_font_sizes/italics_font_size = 9
+theme_override_font_sizes/mono_font_size = 0
+theme_override_font_sizes/normal_font_size = 32
+text = "Button Sounds by Nathan Gibson
+
+Menu Music by Megumi Ryu
+
+Paper texture by Resource Boy
+
+House assets by Olir"
+scroll_active = false
+tab_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="backToMainScreen" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -71.275
+offset_right = 40.0
+offset_bottom = -44.275
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_kxa8x")
+theme_override_font_sizes/font_size = 30
+text = "Voltar para o menu principal"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="backToMainScreen"]
+stream = ExtResource("7_r7nqd")
+
+[node name="backTo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -122.0
+offset_right = 44.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme = ExtResource("6_kxa8x")
+theme_override_font_sizes/font_size = 30
+text = "Voltar "
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="backTo"]
+stream = ExtResource("7_r7nqd")
+
+[connection signal="mouse_entered" from="backToMainScreen" to="." method="_on_back_to_main_screen_mouse_entered"]
+[connection signal="pressed" from="backToMainScreen" to="." method="_on_back_to_main_screen_pressed"]
+[connection signal="mouse_entered" from="backTo" to="." method="_on_back_to_mouse_entered"]
+[connection signal="pressed" from="backTo" to="." method="_on_back_to_pressed"]
