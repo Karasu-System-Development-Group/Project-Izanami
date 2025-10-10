@@ -2,32 +2,11 @@ extends Sprite2D
 @onready var Area = $Area2D
 @onready var hint = $InteractionHint
 @onready var furniture = $furniture
-@onready var fornitune = $"../livingRoomFurniture"
-@onready var transition = $"../transition"
-@onready var player = $"../char"
 
 
 var player_in_area = false
 var isVisible = false
 
-func playTransition():
-	player.set_process_input(false)
-	player.set_physics_process(false)
-	player.set_process(false)
-	transition.visible = true
-	transition.modulate.a = 0.0 
-	var tween = create_tween()
-	tween.tween_property(transition, "modulate:a", 1.0, 1.0)
-	await tween.finished
-	await get_tree().create_timer(2.5).timeout
-	var tween_out = create_tween()
-	tween_out.tween_property(transition, "modulate:a", 0.0, 1.0)
-	await tween_out.finished
-	player.set_process_input(true)
-	player.set_physics_process(true)
-	player.set_process(true)
-
-	transition.visible = false
 
 func _on_area_2d_body_entered(body):
 	player_in_area = true
@@ -43,9 +22,17 @@ func _on_area_2d_body_exited(body):
 
 func _process(delta):
 	if player_in_area and Input.is_action_just_pressed("interact"):
-		playTransition()
-		furniture.play()
-		fornitune.visible = true
-		await get_tree().create_timer(2.0).timeout
-		self.visible = false
-		print("Interagiu com a área")
+		if Char.arrangedRooms[0] == "bedroom" and Char.energy == 1:
+			TransitionManager.play_transition()
+			furniture.play()
+			await get_tree().create_timer(2.0).timeout
+			Char.livingRoomIsArranged = true
+			Char.livingRoomBoxIsVisible = false
+			Char.update_livingroom_objects(get_tree().current_scene)
+			print("Interagiu com a área")
+		elif Char.energy == 0:
+			var pensamentos = ["Agora não...", "Estou muito cansada...", "Amanhã eu termino de arrumar...", ""]
+			Char.internalDialog(pensamentos)
+		else:
+			var pensamentos = ["Quando eu terminar de arrumar, vai estar tarde...","Talvez seja melhor arrumar o quarto antes...", "Eu preciso de um lugar para dormir...", ""]
+			Char.internalDialog(pensamentos)
