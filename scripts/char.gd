@@ -70,11 +70,13 @@ func internalDialog(pensamentos):
 
 
 func moveToOtherPlace(openDoor, lastRoom: String, nextPlace: String):
+	self.canMove(false)
 	TransitionManager.play_transition()
 	openDoor.play()
 	await get_tree().create_timer(2.0).timeout
 	Char.lastRoom = lastRoom
 	get_tree().change_scene_to_file(nextPlace)
+	self.canMove(true)
 
 
 
