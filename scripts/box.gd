@@ -21,11 +21,12 @@ func _on_area_2d_body_exited(body):
 	print("Jogador saiu da área")
 
 func _process(delta):
-	if player_in_area and Input.is_action_just_pressed("interact"):
+	if player_in_area and Input.is_action_just_pressed("interact") and self.visible:
 		if Char.arrangedRooms[0] == "bedroom" and Char.energy == 1:
 			TransitionManager.play_transition()
 			furniture.play()
 			await get_tree().create_timer(2.0).timeout
+			Char.energy = 0
 			Char.livingRoomIsArranged = true
 			Char.livingRoomBoxIsVisible = false
 			Char.update_livingroom_objects(get_tree().current_scene)
