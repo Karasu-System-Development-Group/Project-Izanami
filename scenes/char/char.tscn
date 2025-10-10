@@ -1,0 +1,207 @@
+[gd_scene load_steps=30 format=3 uid="uid://bdnf6w86sw2f8"]
+
+[ext_resource type="Shader" uid="uid://b2vmgcpns6le" path="res://scenes/game/house/house.gdshader" id="1_qcybd"]
+[ext_resource type="Script" uid="uid://c2gsjfnsiwnvn" path="res://scripts/char.gd" id="2_qcybd"]
+[ext_resource type="Texture2D" uid="uid://b3iyswgid73he" path="res://assets/Assets_Haunted_House/Assets_Haunted_House/Character.png" id="3_0rs0e"]
+[ext_resource type="Texture2D" uid="uid://c74wufeq8knlq" path="res://assets/characters/ph/ph.png" id="4_ofsy8"]
+[ext_resource type="Texture2D" uid="uid://d1nmf2lpy0h7m" path="res://assets/characters/ph/idle.png" id="5_40f3a"]
+[ext_resource type="Texture2D" uid="uid://cb2h10uageusq" path="res://assets/characters/ph/walk.png" id="6_5j6qg"]
+[ext_resource type="Script" uid="uid://dhn730qv5mbkb" path="res://scenes/game/house/panel.gd" id="7_hb36i"]
+[ext_resource type="Theme" uid="uid://ctrfqu5b5msha" path="res://assets/styles/ButtonsStyle.tres" id="8_wdst8"]
+[ext_resource type="AudioStream" uid="uid://d0yian0ps6lji" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_01.wav" id="9_ih02o"]
+[ext_resource type="AudioStream" uid="uid://bhyixa2048p0p" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_02.wav" id="10_mnw5v"]
+[ext_resource type="AudioStream" uid="uid://jd6gythby14x" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_03.wav" id="11_0dytc"]
+[ext_resource type="AudioStream" uid="uid://cj261t4x3vwdh" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_04.wav" id="12_kr4f0"]
+[ext_resource type="AudioStream" uid="uid://54rja22hkiy4" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_05.wav" id="13_jcrsd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn06x"]
+shader = ExtResource("1_qcybd")
+shader_parameter/hue_shift = 0.95
+shader_parameter/saturation_scale = 1.2
+shader_parameter/value_scale = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckrhk"]
+shader = ExtResource("1_qcybd")
+shader_parameter/hue_shift = 0.95
+shader_parameter/saturation_scale = 1.2
+shader_parameter/value_scale = 0.6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph7g2"]
+atlas = ExtResource("3_0rs0e")
+region = Rect2(0, 0, 137, 175)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0efm"]
+atlas = ExtResource("4_ofsy8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn06x"]
+atlas = ExtResource("4_ofsy8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2um"]
+atlas = ExtResource("4_ofsy8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt5n8"]
+atlas = ExtResource("4_ofsy8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlh1a"]
+atlas = ExtResource("5_40f3a")
+region = Rect2(0, 0, 700, 1660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb7ih"]
+atlas = ExtResource("5_40f3a")
+region = Rect2(700, 0, 700, 1660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be0b5"]
+atlas = ExtResource("5_40f3a")
+region = Rect2(1400, 0, 700, 1660)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnsrd"]
+atlas = ExtResource("6_5j6qg")
+region = Rect2(1, 0, 976, 1632)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q51y"]
+atlas = ExtResource("6_5j6qg")
+region = Rect2(977, 0, 976, 1632)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f7k5"]
+atlas = ExtResource("6_5j6qg")
+region = Rect2(1953, 0, 976, 1632)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gwdfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph7g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0efm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn06x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds2um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt5n8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlh1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb7ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_be0b5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnsrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q51y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f7k5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k5gfw"]
+radius = 29.0
+height = 212.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5f7k5"]
+streams_count = 5
+stream_0/stream = ExtResource("9_ih02o")
+stream_1/stream = ExtResource("10_mnw5v")
+stream_2/stream = ExtResource("11_0dytc")
+stream_3/stream = ExtResource("12_kr4f0")
+stream_4/stream = ExtResource("13_jcrsd")
+
+[node name="char" type="CharacterBody2D"]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_jn06x")
+input_pickable = true
+script = ExtResource("2_qcybd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ckrhk")
+position = Vector2(180, -16)
+scale = Vector2(0.184107, 0.184107)
+sprite_frames = SubResource("SpriteFrames_gwdfw")
+animation = &"idle"
+frame = 2
+frame_progress = 0.26478
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(177, -29)
+shape = SubResource("CapsuleShape2D_k5gfw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(299, -129)
+offset = Vector2(2.07, -17.365)
+zoom = Vector2(1, 1.135)
+limit_left = 0
+limit_right = 3095
+limit_smoothed = true
+position_smoothing_speed = 2.0
+editor_draw_limits = true
+
+[node name="pause_overlay" type="Panel" parent="."]
+visible = false
+z_index = 10
+layout_direction = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.8
+script = ExtResource("7_hb36i")
+
+[node name="Button" type="Button" parent="pause_overlay"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 31.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("8_wdst8")
+text = "Continuar
+"
+icon_alignment = 1
+
+[node name="footsteps" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5f7k5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 76.0
+offset_top = -214.0
+offset_right = 279.545
+offset_bottom = -168.0
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="pause_overlay/Button" to="pause_overlay" method="_on_button_pressed"]
