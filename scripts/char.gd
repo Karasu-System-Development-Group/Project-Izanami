@@ -22,7 +22,8 @@ var livingRoomBoxIsVisible = true
 var direction = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
 var lastRoom = "outside"
-var lastRoomArranged = "none"
+var energy = 1
+var arrangedRooms = [""]
 
 
 
@@ -44,6 +45,7 @@ func update_livingroom_objects(scene):
 
 
 func canMove(canMove):
+	self.anim.play("idle")
 	self.set_process_input(canMove)
 	self.set_physics_process(canMove)
 	self.set_process(canMove)
@@ -52,6 +54,20 @@ func canMove(canMove):
 func updatePensamento(texto):
 	$RichTextLabel.text = texto
 	
+	
+
+func internalDialog(pensamentos):
+		self.canMove(false)
+		var i = 0
+		for pensamento in pensamentos:
+			Char.updatePensamento(pensamento)
+			if i == pensamentos.size() - 1 :
+				await get_tree().create_timer(1.0).timeout
+			else:
+				await get_tree().create_timer(3.0).timeout
+				i+=1
+		self.canMove(true)
+
 
 
 
