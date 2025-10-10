@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwvm1jnqqc5uv"]
+[gd_scene load_steps=10 format=3 uid="uid://cwvm1jnqqc5uv"]
 
-[ext_resource type="Theme" uid="uid://ctrfqu5b5msha" path="res://assets/styles/ButtonsStyle.tres" id="1_cgv52"]
 [ext_resource type="Script" uid="uid://c4opcdw17yxho" path="res://scenes/menu/about_screen.gd" id="1_gkemx"]
 [ext_resource type="AudioStream" uid="uid://15tuhkrxk0i2" path="res://assets/sounds/menu/Wood Block3.mp3" id="3_8mf4m"]
 [ext_resource type="AudioStream" uid="uid://dorkahdlptslo" path="res://assets/sounds/menu/Wood Block1.ogg" id="4_i6b0p"]
+[ext_resource type="Texture2D" uid="uid://dwuwhd2ruw2se" path="res://assets/menu/menu_bg.webp" id="5_e4cgy"]
+[ext_resource type="Texture2D" uid="uid://btauf2vc4lio2" path="res://assets/menu/bg.png" id="6_ap7bs"]
+[ext_resource type="Texture2D" uid="uid://7at3ccrq58ye" path="res://assets/menu/bg_black.png" id="7_ikh6m"]
+[ext_resource type="Texture2D" uid="uid://cmmjqkgt4rh1" path="res://assets/logo/logo4.png" id="8_p2kb0"]
+[ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="9_ikh6m"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="10_p2kb0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,6 +19,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gkemx")
 
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i6b0p")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(674, 373)
+scale = Vector2(0.25118, 0.25118)
+texture = ExtResource("5_e4cgy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(627, 369.922)
+scale = Vector2(0.796807, 0.455853)
+texture = ExtResource("6_ap7bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-7.62939e-05, 8.28262)
+scale = Vector2(0.909723, 1.01303)
+texture = ExtResource("7_ikh6m")
+
+[node name="logo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1023, 75)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_p2kb0")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -22,27 +51,56 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -525.0
-offset_top = -285.0
+offset_top = -284.0
 offset_right = 525.0
-offset_bottom = 285.0
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_cgv52")
+theme = ExtResource("9_ikh6m")
+theme_override_fonts/normal_font = ExtResource("10_p2kb0")
 theme_override_font_sizes/italics_font_size = 9
 theme_override_font_sizes/mono_font_size = 0
-theme_override_font_sizes/normal_font_size = 23
-text = "Karasu Game Studio apresenta:
+theme_override_font_sizes/normal_font_size = 32
+text = "Uma experiência interativa feita à mão.
 
-Uma experiência interativa feita à mão por:
+História por:
+
 Jorge Magno e Matheus Carnaval
 
-Desenvolvido entre devaneios, café e glitches de realidade.
-Código aberto para os curiosos:
-https://github.com/Karasu-System-Development-Group/Project-Izanami
+Arte por:
 
-Versão 1.0"
+Bibi
+
+Programação por:
+
+Jorge Magno
+
+
+ "
+scroll_active = false
+tab_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="aditionalInfo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.5
+offset_top = -146.0
+offset_right = 151.5
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("9_ikh6m")
+theme_override_font_sizes/font_size = 30
+text = "Informações adicioanais"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="aditionalInfo"]
+stream = ExtResource("3_8mf4m")
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
@@ -51,21 +109,22 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -65.275
-offset_right = 31.0
+offset_left = -40.0
+offset_top = -71.275
+offset_right = 40.0
 offset_bottom = -44.275
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_cgv52")
-theme_override_font_sizes/font_size = 26
+theme = ExtResource("9_ikh6m")
+theme_override_font_sizes/font_size = 30
 text = "Voltar"
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="Back"]
 stream = ExtResource("3_8mf4m")
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_i6b0p")
-
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="mouse_entered" from="aditionalInfo" to="." method="_on_aditional_info_mouse_entered"]
+[connection signal="mouse_entered" from="aditionalInfo" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="aditionalInfo" to="." method="_on_aditional_info_pressed"]
 [connection signal="mouse_entered" from="Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
