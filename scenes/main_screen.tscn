@@ -1,11 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2hhqm873e4x3"]
+[gd_scene load_steps=15 format=3 uid="uid://c2hhqm873e4x3"]
 
 [ext_resource type="Script" uid="uid://bhhntyyuu5a2w" path="res://scenes/MainScreenScript.gd" id="1_7fvvs"]
+[ext_resource type="Texture2D" uid="uid://btauf2vc4lio2" path="res://assets/menu/bg.png" id="1_il54y"]
+[ext_resource type="Texture2D" uid="uid://dwuwhd2ruw2se" path="res://assets/menu/menu_bg.webp" id="1_pn685"]
 [ext_resource type="AudioStream" uid="uid://cxksud3xmf2qr" path="res://assets/sounds/menu/darkness_piano.mp3" id="1_w87pm"]
+[ext_resource type="Texture2D" uid="uid://7at3ccrq58ye" path="res://assets/menu/bg_black.png" id="2_4takm"]
 [ext_resource type="Texture2D" uid="uid://c5rtiyv68yppj" path="res://assets/logo/logo.png" id="2_a46j4"]
-[ext_resource type="Theme" uid="uid://ctrfqu5b5msha" path="res://assets/styles/ButtonsStyle.tres" id="2_kusfh"]
 [ext_resource type="AudioStream" uid="uid://15tuhkrxk0i2" path="res://assets/sounds/menu/Wood Block3.mp3" id="2_lushf"]
 [ext_resource type="AudioStream" uid="uid://dorkahdlptslo" path="res://assets/sounds/menu/Wood Block1.ogg" id="3_aum10"]
+[ext_resource type="Texture2D" uid="uid://cmmjqkgt4rh1" path="res://assets/logo/logo4.png" id="6_352yk"]
+[ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="6_a46j4"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="7_23dc1"]
+[ext_resource type="Texture2D" uid="uid://vun2ci0dhwal" path="res://assets/logo/logo2.png" id="11_u38ol"]
 
 [sub_resource type="GDScript" id="GDScript_w87pm"]
 script/source = "extends Control
@@ -22,32 +28,57 @@ font_names = PackedStringArray("Sitka Small")
 font_italic = true
 font_weight = 525
 
-[sub_resource type="SystemFont" id="SystemFont_kusfh"]
-font_names = PackedStringArray("Sitka Small")
-font_italic = true
-
-[sub_resource type="SystemFont" id="SystemFont_lushf"]
-font_names = PackedStringArray("Sitka Small")
-font_italic = true
-
-[sub_resource type="SystemFont" id="SystemFont_aum10"]
-font_names = PackedStringArray("Sitka Small")
-font_italic = true
-
 [node name="MainScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.002
+anchor_bottom = 1.006
 offset_left = 2.0
 offset_top = 4.0
-offset_right = 2.0
-offset_bottom = 4.0
+offset_right = -0.560059
+offset_bottom = -0.320007
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_w87pm")
 
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(674, 373)
+scale = Vector2(0.25118, 0.25118)
+texture = ExtResource("1_pn685")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1075, 403.489)
+scale = Vector2(0.706839, 0.304386)
+texture = ExtResource("2_4takm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D4"]
+position = Vector2(181.088, -8.17603)
+scale = Vector2(1.21044, 0.987137)
+texture = ExtResource("1_il54y")
+
+[node name="menuBG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(257, 370)
+scale = Vector2(0.364296, 0.300471)
+texture = ExtResource("1_il54y")
+
+[node name="Sprite2D" type="Sprite2D" parent="menuBG"]
+position = Vector2(-7.62939e-05, 8.28262)
+scale = Vector2(0.826144, 1.01303)
+texture = ExtResource("2_4takm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(319, 370)
+scale = Vector2(0.417997, 0.300471)
+texture = ExtResource("1_il54y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(-7.62939e-05, 8.28262)
+scale = Vector2(0.909723, 1.01303)
+texture = ExtResource("2_4takm")
+
 [node name="Logo" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -89,16 +120,28 @@ text = "Project Izanami"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="logo" type="Sprite2D" parent="."]
+position = Vector2(315, 297)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_352yk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1047, 350)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_u38ol")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -158.0
-offset_right = 228.0
-offset_bottom = -57.0
+offset_left = 201.0
+offset_top = -246.0
+offset_right = 389.0
+offset_bottom = -113.0
 grow_vertical = 0
+theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("1_7fvvs")
 
@@ -111,36 +154,37 @@ stream = ExtResource("3_aum10")
 [node name="NewGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_kusfh")
-theme_override_fonts/font = SubResource("SystemFont_kusfh")
+theme = ExtResource("6_a46j4")
+theme_override_fonts/font = ExtResource("7_23dc1")
+theme_override_font_sizes/font_size = 30
 action_mode = 0
 text = "Jogar"
-alignment = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_kusfh")
-theme_override_fonts/font = SubResource("SystemFont_lushf")
+theme = ExtResource("6_a46j4")
+theme_override_fonts/font = ExtResource("7_23dc1")
+theme_override_font_sizes/font_size = 30
 text = "Settings"
 alignment = 0
 
 [node name="About" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_kusfh")
-theme_override_fonts/font = SubResource("SystemFont_aum10")
+theme = ExtResource("6_a46j4")
+theme_override_fonts/font = ExtResource("7_23dc1")
+theme_override_font_sizes/font_size = 30
 text = "Sobre"
-alignment = 0
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_kusfh")
-theme_override_fonts/font = SubResource("SystemFont_lushf")
+theme = ExtResource("6_a46j4")
+theme_override_fonts/font = ExtResource("7_23dc1")
+theme_override_font_sizes/font_size = 30
 text = "Sair"
-alignment = 0
 
 [node name="QuitDialog" type="ConfirmationDialog" parent="VBoxContainer/Quit"]
 handle_input_locally = false
