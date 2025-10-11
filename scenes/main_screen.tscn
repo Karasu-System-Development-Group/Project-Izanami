@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="6_a46j4"]
 [ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="7_23dc1"]
 [ext_resource type="Texture2D" uid="uid://vun2ci0dhwal" path="res://assets/logo/logo2.png" id="11_u38ol"]
+[ext_resource type="Script" uid="uid://c2d0vl4h0ar4n" path="res://scenes/main_screen/quit_confirmation.gd" id="13_bnhpx"]
 
 [sub_resource type="GDScript" id="GDScript_w87pm"]
 script/source = "extends Control
@@ -22,11 +23,6 @@ script/source = "extends Control
 func _on_ready():
 	bgSound.play()
 "
-
-[sub_resource type="SystemFont" id="SystemFont_7fvvs"]
-font_names = PackedStringArray("Sitka Small")
-font_italic = true
-font_weight = 525
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -101,27 +97,28 @@ stream = ExtResource("1_w87pm")
 volume_db = -20.0
 parameters/looping = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
+[node name="copyright" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -139.37
-offset_top = -96.0
-offset_right = 139.37
-offset_bottom = 96.0
+offset_left = -530.0
+offset_top = 229.0
+offset_right = -159.08
+offset_bottom = 421.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = SubResource("SystemFont_7fvvs")
-text = "Project Izanami"
+theme_override_colors/default_color = Color(0.445774, 0.465907, 0.480525, 1)
+theme_override_fonts/normal_font = ExtResource("7_23dc1")
+theme_override_font_sizes/normal_font_size = 13
+text = "© 2025 - Karasu Game Studio /  Karasu Dev Group"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="logo" type="Sprite2D" parent="."]
-position = Vector2(315, 297)
+position = Vector2(315, 270)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_352yk")
 
@@ -136,10 +133,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 201.0
-offset_top = -246.0
-offset_right = 389.0
-offset_bottom = -113.0
+offset_left = 157.0
+offset_top = -257.0
+offset_right = 449.0
+offset_bottom = -124.0
 grow_vertical = 0
 theme_override_constants/separation = 17
 alignment = 1
@@ -158,7 +155,7 @@ theme = ExtResource("6_a46j4")
 theme_override_fonts/font = ExtResource("7_23dc1")
 theme_override_font_sizes/font_size = 30
 action_mode = 0
-text = "Jogar"
+text = "Entrar no apartamento"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 visible = false
@@ -176,7 +173,7 @@ size_flags_vertical = 3
 theme = ExtResource("6_a46j4")
 theme_override_fonts/font = ExtResource("7_23dc1")
 theme_override_font_sizes/font_size = 30
-text = "Sobre"
+text = "Cartas deixadas"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -184,28 +181,64 @@ size_flags_vertical = 3
 theme = ExtResource("6_a46j4")
 theme_override_fonts/font = ExtResource("7_23dc1")
 theme_override_font_sizes/font_size = 30
-text = "Sair"
+text = "Fechar a porta"
 
-[node name="QuitDialog" type="ConfirmationDialog" parent="VBoxContainer/Quit"]
-handle_input_locally = false
-title = ""
-size = Vector2i(323, 100)
-transient = false
-transient_to_focused = true
-unresizable = true
-borderless = true
-always_on_top = true
-popup_window = true
-extend_to_title = true
-sharp_corners = true
-keep_title_visible = false
-ok_button_text = "Yes"
-dialog_text = "Are you sure you want to quit?"
-dialog_hide_on_ok = false
-dialog_close_on_escape = false
-cancel_button_text = "No"
+[node name="quitConfirmation" type="Node2D" parent="VBoxContainer/Quit"]
+visible = false
+script = ExtResource("13_bnhpx")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Quit/quitConfirmation"]
+offset_left = -397.0
+offset_top = -650.0
+offset_right = 1346.0
+offset_bottom = 306.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="white" type="Sprite2D" parent="VBoxContainer/Quit/quitConfirmation"]
+position = Vector2(485.051, -172)
+rotation = 1.5708
+scale = Vector2(0.323763, 0.584989)
+texture = ExtResource("1_il54y")
+
+[node name="black" type="Sprite2D" parent="VBoxContainer/Quit/quitConfirmation"]
+position = Vector2(485.051, -172)
+rotation = 1.5708
+scale = Vector2(0.272853, 0.584989)
+texture = ExtResource("2_4takm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Quit/quitConfirmation"]
+offset_left = 241.0
+offset_top = -243.0
+offset_right = 751.55
+offset_bottom = -203.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_23dc1")
+theme_override_font_sizes/normal_font_size = 30
+text = "Deseja realmente sair do jogo?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="yesButton" type="Button" parent="VBoxContainer/Quit/quitConfirmation"]
+offset_left = 360.0
+offset_top = -159.0
+offset_right = 418.0
+offset_bottom = -112.0
+theme = ExtResource("6_a46j4")
+theme_override_font_sizes/font_size = 28
+disabled = true
+text = "Sim"
+
+[node name="noButton" type="Button" parent="VBoxContainer/Quit/quitConfirmation"]
+offset_left = 552.0
+offset_top = -159.0
+offset_right = 610.0
+offset_bottom = -112.0
+theme = ExtResource("6_a46j4")
+theme_override_font_sizes/font_size = 28
+text = "Não"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_entered" from="." to="VBoxContainer" method="_on_main_screen_tree_entered"]
 [connection signal="ready" from="BGSound" to="VBoxContainer" method="_on_bg_sound_ready"]
 [connection signal="finished" from="VBoxContainer/SelectSound" to="VBoxContainer" method="_on_select_sound_finished"]
@@ -218,4 +251,7 @@ cancel_button_text = "No"
 [connection signal="pressed" from="VBoxContainer/About" to="VBoxContainer" method="_on_about_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/Quit" to="VBoxContainer" method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer" method="_on_quit_pressed"]
-[connection signal="confirmed" from="VBoxContainer/Quit/QuitDialog" to="VBoxContainer" method="_on_quit_dialog_confirmed"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit/quitConfirmation/yesButton" to="VBoxContainer/Quit/quitConfirmation" method="_on_yes_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Quit/quitConfirmation/yesButton" to="VBoxContainer/Quit/quitConfirmation" method="_on_yes_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit/quitConfirmation/noButton" to="VBoxContainer/Quit/quitConfirmation" method="_on_no_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Quit/quitConfirmation/noButton" to="VBoxContainer/Quit/quitConfirmation" method="_on_no_button_pressed"]
