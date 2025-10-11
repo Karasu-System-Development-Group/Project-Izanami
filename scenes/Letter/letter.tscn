@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba15ep6x73ueu"]
+
+[ext_resource type="Texture2D" uid="uid://dmihmcr5hf3pp" path="res://assets/letter/9.png" id="1_fp8h6"]
+[ext_resource type="Script" uid="uid://c7ucdtcnpofh8" path="res://scenes/Letter/scripts/letter.gd" id="1_yafus"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="2_yafus"]
+[ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="4_6eywv"]
+
+[node name="letter" type="Node2D"]
+z_index = 6
+script = ExtResource("1_yafus")
+
+[node name="letterObject" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="letterObject"]
+visible = false
+
+[node name="paperBg" type="Sprite2D" parent="letterObject/Node2D"]
+position = Vector2(661.026, 352)
+rotation = 1.5708
+scale = Vector2(0.464551, 0.618031)
+texture = ExtResource("1_fp8h6")
+
+[node name="letterText" type="RichTextLabel" parent="letterObject/Node2D"]
+offset_left = 467.0
+offset_top = 112.0
+offset_right = 885.6
+offset_bottom = 628.855
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_yafus")
+theme_override_font_sizes/normal_font_size = 30
+text = "Senhora moradora,
+
+Não podemos lhe esperar para auxiliar na colocação dos móveis. Deixmos toda a mudança da sala na sua cozinha, as caixas com os do quarto estão lá.
+
+Espero que tenha uma boa vida na sua casa nova. 
+
+Atenciosmanete,
+
+Equipe Transportadora ZR "
+autowrap_mode = 2
+
+[node name="closeButton" type="Button" parent="letterObject/Node2D"]
+offset_left = 598.0
+offset_top = 638.0
+offset_right = 716.0
+offset_bottom = 669.0
+theme = ExtResource("4_6eywv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Guardar carta"
+
+[connection signal="pressed" from="letterObject/Node2D/closeButton" to="." method="_on_close_button_pressed"]
