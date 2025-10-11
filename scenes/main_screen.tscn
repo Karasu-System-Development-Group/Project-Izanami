@@ -21,6 +21,10 @@ script/source = "extends Control
 
 
 func _on_ready():
+	$version.text = \"%s - Versão: %s\" % [
+	ProjectSettings.get_setting(\"application/config/name\"),
+	ProjectSettings.get_setting(\"application/config/version\")
+	]
 	bgSound.play()
 "
 
@@ -116,6 +120,25 @@ theme_override_font_sizes/normal_font_size = 13
 text = "© 2025 - Karasu Game Studio /  Karasu Dev Group"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="version" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 432.0
+offset_top = 323.0
+offset_right = 634.145
+offset_bottom = 351.495
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.445774, 0.465907, 0.480525, 1)
+theme_override_fonts/normal_font = ExtResource("7_23dc1")
+theme_override_font_sizes/normal_font_size = 13
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="logo" type="Sprite2D" parent="."]
 position = Vector2(315, 270)
