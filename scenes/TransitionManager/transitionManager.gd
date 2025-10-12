@@ -20,16 +20,26 @@ func play_transition(totalTime:=1.5):
 	Char.set_process(true)
 
 
-func play_audio_transition(audio_player, play_time: float = 5.0, fade_time: float = 2.0):
+func play_audio_transition(audio_player, play_time: float = 5.0, fade_time: float = 2.0) -> void:
+	if not is_instance_valid(audio_player):
+		return
 	audio_player.volume_db = -40
 	audio_player.play()
 	var tween := create_tween()
 	tween.tween_property(audio_player, "volume_db", 0, fade_time)
 	await tween.finished
 
-	await get_tree().create_timer(play_time).timeout
+	var timer := get_tree().create_timer(play_time)
+	while timer.time_left > 0:
+		if not is_instance_valid(audio_player):
+			return
+		await get_tree().process_frame
+	if not is_instance_valid(audio_player):
+		return
 
 	tween = create_tween()
 	tween.tween_property(audio_player, "volume_db", -40, fade_time)
 	await tween.finished
-	audio_player.stop()
+
+	if is_instance_valid(audio_player):
+		audio_player.stop()
