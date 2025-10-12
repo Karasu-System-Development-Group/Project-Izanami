@@ -25,8 +25,12 @@ func _on_bed_area_2d_body_exited(body):
 	
 
 func _process(delta):
-	if player_in_area and Input.is_action_just_pressed("interact") and self.visible and Char.energy == 0:
-		TransitionManager.play_transition()
-		await get_tree().create_timer(2.0).timeout
-		Char.energy = 1
-		print("Interagiu com a área")
+	if player_in_area and Input.is_action_just_pressed("interact") and self.visible:
+		if Char.energy == 0:
+			TransitionManager.play_transition()
+			await get_tree().create_timer(2.0).timeout
+			Char.energy = 1
+			print("Interagiu com a área")
+		elif Char.energy > 0 and self.visible:
+			Char.internalDialog(["Ainda tenho energia para fazer alguma coisa...", ""])
+		
