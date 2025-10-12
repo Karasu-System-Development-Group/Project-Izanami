@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba15ep6x73ueu"]
+[gd_scene load_steps=6 format=3 uid="uid://ba15ep6x73ueu"]
 
 [ext_resource type="Texture2D" uid="uid://dmihmcr5hf3pp" path="res://assets/letter/9.png" id="1_fp8h6"]
 [ext_resource type="Script" uid="uid://c7ucdtcnpofh8" path="res://scenes/Letter/scripts/letter.gd" id="1_yafus"]
 [ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="2_yafus"]
 [ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="4_6eywv"]
+[ext_resource type="AudioStream" uid="uid://dd8nocm61cpsd" path="res://assets/sounds/letter/opening-letter-69854.wav" id="5_t53qr"]
 
 [node name="letter" type="Node2D"]
 z_index = 6
@@ -47,5 +48,8 @@ offset_bottom = 669.0
 theme = ExtResource("4_6eywv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Guardar carta"
+
+[node name="letterSound" type="AudioStreamPlayer2D" parent="letterObject/Node2D"]
+stream = ExtResource("5_t53qr")
 
 [connection signal="pressed" from="letterObject/Node2D/closeButton" to="." method="_on_close_button_pressed"]
