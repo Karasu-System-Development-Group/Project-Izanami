@@ -1,18 +1,21 @@
-[gd_scene load_steps=30 format=3 uid="uid://bdnf6w86sw2f8"]
+[gd_scene load_steps=33 format=3 uid="uid://bdnf6w86sw2f8"]
 
 [ext_resource type="Shader" uid="uid://b2vmgcpns6le" path="res://scenes/game/house/house.gdshader" id="1_qcybd"]
 [ext_resource type="Script" uid="uid://c2gsjfnsiwnvn" path="res://scripts/char.gd" id="2_qcybd"]
 [ext_resource type="Texture2D" uid="uid://b3iyswgid73he" path="res://assets/Assets_Haunted_House/Assets_Haunted_House/Character.png" id="3_0rs0e"]
+[ext_resource type="Script" uid="uid://dn32k0nqenlmj" path="res://scenes/char/pause_overlay.gd" id="3_ofsy8"]
 [ext_resource type="Texture2D" uid="uid://c74wufeq8knlq" path="res://assets/characters/ph/ph.png" id="4_ofsy8"]
 [ext_resource type="Texture2D" uid="uid://d1nmf2lpy0h7m" path="res://assets/characters/ph/idle.png" id="5_40f3a"]
 [ext_resource type="Texture2D" uid="uid://cb2h10uageusq" path="res://assets/characters/ph/walk.png" id="6_5j6qg"]
-[ext_resource type="Script" uid="uid://dhn730qv5mbkb" path="res://scenes/game/house/panel.gd" id="7_hb36i"]
-[ext_resource type="Theme" uid="uid://ctrfqu5b5msha" path="res://assets/styles/ButtonsStyle.tres" id="8_wdst8"]
 [ext_resource type="AudioStream" uid="uid://d0yian0ps6lji" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_01.wav" id="9_ih02o"]
 [ext_resource type="AudioStream" uid="uid://bhyixa2048p0p" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_02.wav" id="10_mnw5v"]
 [ext_resource type="AudioStream" uid="uid://jd6gythby14x" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_03.wav" id="11_0dytc"]
 [ext_resource type="AudioStream" uid="uid://cj261t4x3vwdh" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_04.wav" id="12_kr4f0"]
 [ext_resource type="AudioStream" uid="uid://54rja22hkiy4" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_05.wav" id="13_jcrsd"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="14_leu2r"]
+[ext_resource type="Texture2D" uid="uid://btauf2vc4lio2" path="res://assets/menu/bg.png" id="15_hb36i"]
+[ext_resource type="Texture2D" uid="uid://7at3ccrq58ye" path="res://assets/menu/bg_black.png" id="16_wdst8"]
+[ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="18_ih02o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jn06x"]
 shader = ExtResource("1_qcybd")
@@ -140,6 +143,74 @@ material = SubResource("ShaderMaterial_jn06x")
 input_pickable = true
 script = ExtResource("2_qcybd")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 1
+process_thread_messages = 0
+script = ExtResource("3_ofsy8")
+
+[node name="pauseOverlay" type="Node2D" parent="CanvasLayer"]
+visible = false
+z_index = 35
+position = Vector2(0, 493)
+
+[node name="overlayTexture" type="Node2D" parent="CanvasLayer/pauseOverlay"]
+z_index = 1
+position = Vector2(142, 26)
+scale = Vector2(0.999999, 0.999999)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+offset_left = -397.0
+offset_top = -650.0
+offset_right = 1346.0
+offset_bottom = 306.0
+color = Color(0, 0, 0, 0.588235)
+
+[node name="white" type="Sprite2D" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+position = Vector2(485.051, -172)
+rotation = 1.5708
+scale = Vector2(0.323763, 0.584989)
+texture = ExtResource("15_hb36i")
+flip_h = true
+
+[node name="black" type="Sprite2D" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+position = Vector2(485.051, -172)
+rotation = 1.5708
+scale = Vector2(0.272853, 0.584989)
+texture = ExtResource("16_wdst8")
+flip_h = true
+
+[node name="exitButton" type="Button" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+offset_left = 608.001
+offset_top = -159.0
+offset_right = 666.001
+offset_bottom = -112.0
+theme = ExtResource("18_ih02o")
+theme_override_font_sizes/font_size = 28
+text = "Sair"
+
+[node name="continueButton" type="Button" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+offset_left = 325.0
+offset_top = -159.0
+offset_right = 446.0
+offset_bottom = -112.0
+theme = ExtResource("18_ih02o")
+theme_override_font_sizes/font_size = 28
+text = "Continuar"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/pauseOverlay/overlayTexture"]
+offset_left = 241.0
+offset_top = -243.0
+offset_right = 751.55
+offset_bottom = -203.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("14_leu2r")
+theme_override_font_sizes/normal_font_size = 30
+text = "Jogo pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ckrhk")
 position = Vector2(180, -16)
@@ -149,13 +220,9 @@ animation = &"idle"
 frame = 2
 frame_progress = 0.26478
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(177, -29)
-shape = SubResource("CapsuleShape2D_k5gfw")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(299, -129)
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+position = Vector2(646.363, -613.773)
+scale = Vector2(5.43162, 5.43162)
 offset = Vector2(2.07, -17.365)
 zoom = Vector2(1, 1.135)
 limit_left = 0
@@ -164,44 +231,25 @@ limit_smoothed = true
 position_smoothing_speed = 2.0
 editor_draw_limits = true
 
-[node name="pause_overlay" type="Panel" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-z_index = 10
-layout_direction = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(5, 5)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 3.8
-script = ExtResource("7_hb36i")
-
-[node name="Button" type="Button" parent="pause_overlay"]
-visible = false
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 31.0
-scale = Vector2(0.7, 0.7)
-theme = ExtResource("8_wdst8")
-text = "Continuar
-"
-icon_alignment = 1
+position = Vector2(177, -29)
+shape = SubResource("CapsuleShape2D_k5gfw")
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_5f7k5")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 76.0
-offset_top = -214.0
-offset_right = 279.545
-offset_bottom = -168.0
+offset_top = -226.0
+offset_right = 288.2
+offset_bottom = -160.0
+theme_override_fonts/normal_font = ExtResource("14_leu2r")
+theme_override_font_sizes/normal_font_size = 20
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="pause_overlay/Button" to="pause_overlay" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/exitButton" to="CanvasLayer" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/continueButton" to="CanvasLayer/pauseOverlay" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/continueButton" to="CanvasLayer" method="_on_continue_button_pressed"]
