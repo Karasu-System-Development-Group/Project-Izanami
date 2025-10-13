@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var footsteps = $footsteps
 @export var speed = 400
-@onready var camera = $Camera2D
+@onready var camera = $AnimatedSprite2D/Camera2D
 
 @onready var bedRoomFurniture = $bedRoomFurnitrune
 @onready var bedRoomBox = $bedroomBox
@@ -24,6 +24,7 @@ var rng = RandomNumberGenerator.new()
 var lastRoom = "outside"
 var energy = 1
 var arrangedRooms = [""]
+var checkedEvents = []
 
 
 
@@ -114,3 +115,7 @@ func _physics_process(delta):
 
 	velocity = direction * speed
 	move_and_slide()
+
+
+func _on_exit_button_pressed():
+	pass # Replace with function body.
