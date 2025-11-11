@@ -49,7 +49,7 @@ theme = ExtResource("4_6eywv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Guardar carta"
 
-[node name="letterSound" type="AudioStreamPlayer2D" parent="letterObject/Node2D"]
+[node name="letterSound" type="AudioStreamPlayer" parent="letterObject/Node2D"]
 stream = ExtResource("5_t53qr")
 
 [connection signal="pressed" from="letterObject/Node2D/closeButton" to="." method="_on_close_button_pressed"]
