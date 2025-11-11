@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://txku0c4qpbt7"]
+
+[ext_resource type="Script" uid="uid://wp3d8m2uffa4" path="res://scenes/game/house/scripts/envelope.gd" id="1_18bdb"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="2_7p7qj"]
+[ext_resource type="Shader" uid="uid://b2vmgcpns6le" path="res://scenes/game/house/house.gdshader" id="3_2iv7x"]
+[ext_resource type="Texture2D" uid="uid://6snp8r8y0gas" path="res://assets/Assets_Haunted_House/Assets_Haunted_House/Envelope.png" id="4_82q6v"]
+[ext_resource type="AudioStream" uid="uid://8j7wt05pgyso" path="res://assets/sounds/letter/scream-90747.mp3" id="5_hx345"]
+[ext_resource type="AudioStream" uid="uid://ccyvwip1vtsv5" path="res://assets/sounds/footsteps/footsteps-lino-90221.mp3" id="6_6bt1s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q51y"]
+shader = ExtResource("3_2iv7x")
+shader_parameter/hue_shift = 0.95
+shader_parameter/saturation_scale = 1.2
+shader_parameter/value_scale = 0.6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q51y"]
+size = Vector2(420.05, 143.727)
+
+[node name="envelopeNode" type="Node2D"]
+script = ExtResource("1_18bdb")
+
+[node name="letterText" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 564.0
+offset_top = 619.0
+offset_right = 670.585
+offset_bottom = 659.0
+theme_override_fonts/normal_font = ExtResource("2_7p7qj")
+theme_override_font_sizes/normal_font_size = 20
+text = "Carta"
+
+[node name="envelope" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8q51y")
+position = Vector2(591, 685)
+rotation = -0.23911
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_82q6v")
+
+[node name="Area2D" type="Area2D" parent="envelope"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="envelope/Area2D"]
+position = Vector2(16.8055, 6.30176)
+rotation = 0.23911
+shape = SubResource("RectangleShape2D_8q51y")
+
+[node name="scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hx345")
+
+[node name="footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6bt1s")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="area_entered" from="envelope/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="envelope/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="envelope/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="envelope/Area2D" to="." method="_on_area_2d_body_exited"]
