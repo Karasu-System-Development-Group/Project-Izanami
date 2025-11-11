@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bdnf6w86sw2f8"]
+[gd_scene load_steps=39 format=3 uid="uid://bdnf6w86sw2f8"]
 
 [ext_resource type="Shader" uid="uid://b2vmgcpns6le" path="res://scenes/game/house/house.gdshader" id="1_qcybd"]
 [ext_resource type="Script" uid="uid://c2gsjfnsiwnvn" path="res://scripts/char.gd" id="2_qcybd"]
@@ -9,11 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://cb2h10uageusq" path="res://assets/characters/ph/walk.png" id="6_5j6qg"]
 [ext_resource type="AudioStream" uid="uid://d0yian0ps6lji" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_01.wav" id="9_ih02o"]
 [ext_resource type="AudioStream" uid="uid://bhyixa2048p0p" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_02.wav" id="10_mnw5v"]
+[ext_resource type="Texture2D" uid="uid://c5avd6limpcc0" path="res://assets/characters/new/i1.png" id="10_wdst8"]
 [ext_resource type="AudioStream" uid="uid://jd6gythby14x" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_03.wav" id="11_0dytc"]
+[ext_resource type="Texture2D" uid="uid://c3gyt4xh7owa" path="res://assets/characters/new/i2.png" id="11_ih02o"]
 [ext_resource type="AudioStream" uid="uid://cj261t4x3vwdh" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_04.wav" id="12_kr4f0"]
+[ext_resource type="Texture2D" uid="uid://nb7u8vqt5ei5" path="res://assets/characters/new/i3.png" id="12_mnw5v"]
 [ext_resource type="AudioStream" uid="uid://54rja22hkiy4" path="res://assets/sounds/footsteps/Parquet_Floor_Mono_05.wav" id="13_jcrsd"]
 [ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="14_leu2r"]
+[ext_resource type="Texture2D" uid="uid://bb8xn42qihdk0" path="res://assets/characters/new/w1.png" id="14_mnw5v"]
+[ext_resource type="Texture2D" uid="uid://cishlcq4ewv3j" path="res://assets/characters/new/w2.png" id="15_0dytc"]
 [ext_resource type="Texture2D" uid="uid://btauf2vc4lio2" path="res://assets/menu/bg.png" id="15_hb36i"]
+[ext_resource type="Texture2D" uid="uid://p5f3ju8shnwb" path="res://assets/characters/new/w3.png" id="16_kr4f0"]
 [ext_resource type="Texture2D" uid="uid://7at3ccrq58ye" path="res://assets/menu/bg_black.png" id="16_wdst8"]
 [ext_resource type="Theme" uid="uid://d3abll6mdnwgu" path="res://assets/styles/Font.tres" id="18_ih02o"]
 
@@ -97,6 +103,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("10_wdst8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ih02o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mnw5v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qlh1a")
 }, {
 "duration": 1.0,
@@ -106,7 +126,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_be0b5")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_mnw5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0dytc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kr4f0")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }, {
 "frames": [{
@@ -120,7 +154,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5f7k5")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walk_1",
 "speed": 5.0
 }]
 
@@ -216,9 +250,8 @@ material = SubResource("ShaderMaterial_ckrhk")
 position = Vector2(180, -16)
 scale = Vector2(0.184107, 0.184107)
 sprite_frames = SubResource("SpriteFrames_gwdfw")
-animation = &"idle"
-frame = 2
-frame_progress = 0.26478
+animation = &"walk"
+frame_progress = 0.300722
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 position = Vector2(646.363, -613.773)
@@ -251,5 +284,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/exitButton" to="CanvasLayer" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/continueButton" to="CanvasLayer/pauseOverlay" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/continueButton" to="CanvasLayer" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseOverlay/overlayTexture/continueButton" to="CanvasLayer/pauseOverlay" method="_on_continue_button_pressed"]
