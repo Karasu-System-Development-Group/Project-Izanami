@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://rh3eol6tjwvk"]
+
+[ext_resource type="Texture2D" uid="uid://dof7h6dorlq1i" path="res://assets/dialog/box_white.png" id="1_cuwpk"]
+[ext_resource type="Texture2D" uid="uid://1wg7beor8f8f" path="res://assets/dialog/box_black.png" id="2_v46n8"]
+[ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="3_x1gq1"]
+
+[node name="DialogBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 54.0
+offset_right = 40.0
+offset_bottom = 94.0
+
+[node name="Dialog" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 620.0
+offset_top = 646.0
+offset_right = 620.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.226332, 0.226332)
+expand_mode = 1
+
+[node name="white_bg" type="TextureRect" parent="Control/Dialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cuwpk")
+
+[node name="black_bg" type="TextureRect" parent="Control/Dialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2327.0
+offset_top = -903.0
+offset_right = 2327.0
+offset_bottom = 903.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v46n8")
+expand_mode = 1
+
+[node name="charName" type="RichTextLabel" parent="Control"]
+z_index = 1024
+offset_left = 153.0
+offset_top = 509.0
+offset_right = 663.55
+offset_bottom = 549.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_x1gq1")
+theme_override_font_sizes/normal_font_size = 35
+text = "Nome do Personagem"
+vertical_alignment = 1
+
+[node name="dialogText" type="RichTextLabel" parent="Control"]
+offset_left = 211.0
+offset_top = 569.0
+offset_right = 1064.06
+offset_bottom = 742.65
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_x1gq1")
+theme_override_font_sizes/normal_font_size = 30
+text = "Diálogo bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+tab_size = 5
