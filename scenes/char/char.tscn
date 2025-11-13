@@ -182,6 +182,7 @@ process_mode = 3
 process_thread_group = 1
 process_thread_group_order = 1
 process_thread_messages = 0
+visible = false
 script = ExtResource("3_ofsy8")
 
 [node name="pauseOverlay" type="Node2D" parent="CanvasLayer"]
