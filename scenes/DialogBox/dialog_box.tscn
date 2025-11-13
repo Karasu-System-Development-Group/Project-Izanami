@@ -1,24 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://rh3eol6tjwvk"]
+[gd_scene load_steps=5 format=3 uid="uid://rh3eol6tjwvk"]
 
 [ext_resource type="Texture2D" uid="uid://dof7h6dorlq1i" path="res://assets/dialog/box_white.png" id="1_cuwpk"]
+[ext_resource type="Script" uid="uid://3oxgbben512v" path="res://scenes/DialogBox/dialog_box.gd" id="1_v46n8"]
 [ext_resource type="Texture2D" uid="uid://1wg7beor8f8f" path="res://assets/dialog/box_black.png" id="2_v46n8"]
 [ext_resource type="FontFile" uid="uid://foddnacssg2v" path="res://assets/fonts/Kurland_Font_0_40/OpenType (.otf)/Kurland-Regular.otf" id="3_x1gq1"]
 
 [node name="DialogBox" type="Control"]
+z_index = 900
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v46n8")
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 0
 offset_top = 54.0
 offset_right = 40.0
 offset_bottom = 94.0
 
-[node name="Dialog" type="TextureRect" parent="Control"]
+[node name="Dialog" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,7 +40,7 @@ grow_vertical = 2
 scale = Vector2(0.226332, 0.226332)
 expand_mode = 1
 
-[node name="white_bg" type="TextureRect" parent="Control/Dialog"]
+[node name="white_bg" type="TextureRect" parent="CanvasLayer/Control/Dialog"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_cuwpk")
 
-[node name="black_bg" type="TextureRect" parent="Control/Dialog"]
+[node name="black_bg" type="TextureRect" parent="CanvasLayer/Control/Dialog"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -65,8 +71,9 @@ grow_vertical = 2
 texture = ExtResource("2_v46n8")
 expand_mode = 1
 
-[node name="charName" type="RichTextLabel" parent="Control"]
+[node name="charName" type="RichTextLabel" parent="CanvasLayer/Control"]
 z_index = 1024
+layout_mode = 0
 offset_left = 153.0
 offset_top = 509.0
 offset_right = 663.55
@@ -77,7 +84,8 @@ theme_override_font_sizes/normal_font_size = 35
 text = "Nome do Personagem"
 vertical_alignment = 1
 
-[node name="dialogText" type="RichTextLabel" parent="Control"]
+[node name="dialogText" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 211.0
 offset_top = 569.0
 offset_right = 1064.06
@@ -87,3 +95,5 @@ theme_override_fonts/normal_font = ExtResource("3_x1gq1")
 theme_override_font_sizes/normal_font_size = 30
 text = "Diálogo bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
 tab_size = 5
+
+[connection signal="ready" from="." to="." method="_on_ready"]
