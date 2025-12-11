@@ -14,9 +14,14 @@ func start_day():
 	action.call()
 
 func day_0():
+	Char.canMove(false)
 	var text = Letter.read_text("res://dialogues/letters/texts/welcome.txt")
 	Letter.show_message(text)
 	Letter.isLetterVisible = false
+	await Letter.letter_closed
+	DialogBox.run("Você", ["Que estranho...", "Algum vizinho deixou isso..?", "Como ele sabe as coisas que eu fiz..?", "Será que eu deveria investigar?", "Ou é melhor arrumar minhas mudanças?", ""])
+	Char.canMove(true)
+
 	
 func day_1():
 	var events = ["start","livingroombox","bathroomvisited"]
@@ -37,6 +42,7 @@ func day_1():
 	Letter.isLetterVisible = false
 	Letter.show_message(text)
 	await Letter.letter_closed
+	DialogBox.run("Você", ["Que estranho...", "Algum vizinho deixou isso..?", "Como ele sabe as coisas que eu fiz..?", "Será que eu deveria investigar?", "Ou é melhor arrumar minhas mudanças?", ""])
 	Char.internalDialog(["Que estranho...", "Algum vizinho deixou isso..?", "Como ele sabe as coisas que eu fiz..?", "Será que eu deveria investigar?", "Ou é melhor arrumar minhas mudanças?", ""])
 
 func day_2():
